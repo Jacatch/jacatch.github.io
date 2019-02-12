@@ -1,0 +1,1545 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="常用的排序算法, 天井">
+    <meta name="description" content="
+简单选择排序
+
+在java编程中我们经常遇到排序问题，在我们刚刚学习编程时，我们通常使用的是以下的方式进行排序：
+
+int temp;
+for(int i = 0; i &amp;lt; data.length() - 1;i++){
+  for">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>常用的排序算法 | 天井</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">天井</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">天井</div>
+        <div class="logo-desc">
+            
+            我们知道的永远比我们自认为知道的多，我们知道的却比我们想要摘掉的少。
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/jacatch" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+
+    <div class="social-link">
+    <a href="https://github.com/jacatch" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:jacatch@outlook.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=915084059" class="tooltipped" data-tooltip="QQ联系我: 915084059" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+        <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/jacatch" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/images/20180514.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        常用的排序算法
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/算法/" target="_blank">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/程序设计/" class="post-category" target="_blank">
+                                程序设计
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-05-14
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.6k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        10 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="/2018/05/14/sort-algorithm/sort-algorithm-list.png" alt=""></p>
+<h2 id="1">简单选择排序</h2>
+
+<p>在java编程中我们经常遇到排序问题，在我们刚刚学习编程时，我们通常使用的是以下的方式进行排序：</p>
+<a id="more"></a>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">int</span> temp<span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> data<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>j <span class="token operator">&lt;</span> data<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      temp <span class="token operator">=</span> data<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      data<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这种排序方式就是我们最基础的<strong>选择排序</strong>。</p>
+<p>选择排序的思想是所有排序算法中最简单易懂的：<strong>循环找出数组中最小的数置于最前。</strong>但选择排序存在两点缺陷：</p>
+<ul>
+<li>有许多不必要的数据交换操作</li>
+</ul>
+<blockquote>
+<p>例如：将数组{3,1,5,4,0}进行升序排序，使用选择排序需要经历以下步骤</p>
+<ol>
+<li>{1,3,5,4,0} 将3与1进行交换</li>
+<li>{1,3,5,4,0} 5大于1，不进行交换</li>
+<li>{1,3,5,4,0} 4大于1，不进行交换</li>
+<li>{0,3,5,4,1} 0小于1，进行交换操作</li>
+</ol>
+<p>到这里就会发现，在执行到第四步时，只因为0大于1，就将0置于最后，而我们需要的操作仅仅是将0置于最前。这样即增加了之后的操作数，也增加了交换次数。</p>
+</blockquote>
+<ul>
+<li>不稳定排序算法</li>
+</ul>
+<blockquote>
+<p>当数组中的相同值在排序后的相对位置不变时，我们说这种排序算法是稳定排序算法。</p>
+<p>在选择排序中，举例：{3,3,1}<br>我们在进行排序时，会将第一个3与1进行交换，两个3的相对位置发生了改变，故说它是不稳定排序算法。</p>
+</blockquote>
+<p><strong><em>算法复杂度：$O(n^2)$</em></strong></p>
+<p><strong><em>循环次数：$\frac{n(n-1)}{2}$</em></strong></p>
+<hr>
+<h2 id="2">冒泡排序</h2>
+
+<p>冒泡排序的思想也比较简单，也是像选择排序一样存在两个循环。在第一次循环时，从倒数第二个元素比较到第一个元素，若当前元素的值，与当前元素+1位置的值不构成排序关系时，就将两元素进行交换。第二次循环从倒数第二个元素比较到第二个元素……依次类推。</p>
+<p>假设数组{21,34,12,34,78,12,34}，要使用冒泡排序进行由小到大排序，则会经历以下步骤：</p>
+<ol>
+<li>{21,34,12,34,78,<font color="red">12</font>,<font color="red">34</font>}</li>
+<li>{21,34,12,34,<font color="red">12</font>,<font color="red">78</font>,34}</li>
+<li>{21,34,12,<font color="red">12</font>,<font color="red">34</font>,78,34}</li>
+<li>{21,34,<font color="red">12</font>,<font color="red">12</font>,34,78,34}</li>
+<li>{21,<font color="red">12</font>,<font color="red">34</font>,12,34,78,34}</li>
+<li>{<font color="red">12</font>,<font color="red">21</font>,34,12,34,78,34}</li>
+</ol>
+<p>……<br>可以看出，整个排序过程中，最小的元素像冒泡一样从最后浮到的最前，所以这种排序算法被称为<strong>冒泡排序</strong>。</p>
+<p>将这种算法落实到代码上就是：</p>
+<pre class=" language-Java"><code class="language-Java">for(int i = 0;i < data.length - 1;i++){
+  for(int j = data.length - 2;j >= i;j--){
+    if(data[j] > data[j + 1]){
+      int temp = data[j];
+      data[j] = data[j+1];
+      data[j+1] = temp;
+    }
+  }
+}
+</code></pre>
+<p>当然，这时从后向前的冒泡排序，根据同样的理论，我们也可以写出从前往后的冒泡操作：</p>
+<pre class=" language-Java"><code class="language-Java">for(int i = 0;i < data.length - 1;i++){
+  for(int j = 0;j < data.length - 1 - i;j++){
+    if(data[j] > data[j + 1]){
+      int temp = data[j];
+      data[j] = data[j+1];
+      data[j+1] = temp;
+    }
+  }
+}
+</code></pre>
+<p>与选择排序不同，冒泡排序的操作中必然会导致两相同元素靠在一起，这时我们不对相同元素进行位置交换，则排序结束后相同元素的相对位置不变，故冒泡排序是一种<strong>稳定排序算法</strong>。</p>
+<h6 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h6><p>当n个元素的数组排序开始时就是顺序排列，则需要进行n - 1次比较、0次移动即可完成整个排序,此时的比较次数C和移动次数M最小：</p>
+<p>$$C_{min} = n - 1$$</p>
+<p>$$M_{min} = 0$$</p>
+<p>故冒泡排序最好算法复杂度为<strong><em>$$O(n)$$</em></strong></p>
+<p>当数组排序开始时是逆序排列，则需要进行n-1次循环，第i次循环需要进行n-1-i次比较，每次比较需要进行三次移动，此时当比较次数和移动次数最大：</p>
+<p>$$C_{max} = \frac{n(n-1)}{2} = O(n^2)$$</p>
+<p>$$M_{max} = \frac{3n(n-1)}{2} = O(n^2)$$</p>
+<p>故冒泡排序最坏算法复杂度为<strong><em>$$O(n^2)$$</em></strong></p>
+<p>因此，冒泡排序算法当平均算法复杂度为<strong><em>$$O(n^2)$$</em></strong></p>
+<hr>
+<h2 id="3">快速排序</h2>
+
+<p>快速排序与冒泡排序都属于<strong>交换排序</strong>。快速排序是对冒泡排序对一种优化。快速排序对主要思想是<strong>挖坑填数</strong>和<strong>分治法</strong>。</p>
+<blockquote>
+<p><strong>分治法</strong>就是将需要解决的问题转化为更小的子问题，并将子问题逐个击破，将子问题的解进行合并，合并为原问题的解。</p>
+</blockquote>
+<p>快速排序的基本原理是：在需要排序的数组中选取一个数作为<strong>基准数</strong>，通过两个游标分别从左向右、从右向左进行扫描，将达成排序关系A的放在基准数左边，达成排序关系B的放在基准数右边。然后左右分串再次进行类似操作。</p>
+<p>下面举一个例子进行详细说明：</p>
+<p>欲使用快速排序对数组{12,3,22,51,13,7,10,11}进行升序排序：</p>
+<p>1.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">基准数</th>
+<th style="text-align:center">i</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">j</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">12</font></td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">51</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">11</td>
+</tr>
+</tbody>
+</table>
+<p>首先要选择基准数，为了方便起见，我们使用数组第一个值为基准数，这时设置两个游标i和j，分别从左向右、从右向左进行扫描。</p>
+<p>2.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">基准数</th>
+<th style="text-align:center"></th>
+<th style="text-align:center">i</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">j</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">12</font></td>
+<td style="text-align:center">3</td>
+<td style="text-align:center"><font color="red">22</font></td>
+<td style="text-align:center">51</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center"><font color="red">11</font></td>
+</tr>
+</tbody>
+</table>
+<p>此时，i移动到22时，22大于基准数12，故停止扫描，j开始移动。j移动到11时，发现11小于基准数12，故停止扫描。</p>
+<p>3.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">基准数</th>
+<th style="text-align:center"></th>
+<th style="text-align:center">i</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">j</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">12</font></td>
+<td style="text-align:center">3</td>
+<td style="text-align:center"><font color="red">11</font></td>
+<td style="text-align:center">51</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center"><font color="red">22</font></td>
+</tr>
+</tbody>
+</table>
+<p>将两个数进行交换，交换后，继续从i开始扫描，并重复之前的操作。</p>
+<p>4.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">基准数</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">i</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">j</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">12</font></td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center"><font color="red">10</font></td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center"><font color="red">51</font></td>
+<td style="text-align:center">22</td>
+</tr>
+</tbody>
+</table>
+<p>10和51进行了交换。</p>
+<p>5.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">基准数</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">i</th>
+<th style="text-align:center">j</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">12</font></td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center"><font color="red">7</font></td>
+<td style="text-align:center"><font color="red">13</font></td>
+<td style="text-align:center">51</td>
+<td style="text-align:center">22</td>
+</tr>
+</tbody>
+</table>
+<p>7和13进行了交换。</p>
+<p>6.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">i</th>
+<th style="text-align:center">j</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">7</font></td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center"><font color="red">12</font></td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">51</td>
+<td style="text-align:center">22</td>
+</tr>
+</tbody>
+</table>
+<p>当i和j相遇时，将基准数与i交换，此时基准数左边都是小于12的数，右边都是大于12的数。再将左右的数分成两个字串，使用递归再次进行之前的操作，知道字串不能再分，则完成了排序。</p>
+<h5 id="基准数的选择"><a href="#基准数的选择" class="headerlink" title="基准数的选择"></a>基准数的选择</h5><p>在我们通常情况下，基准数的选择主要有以下几种方式：</p>
+<ol>
+<li>使用第一个或最后一个数作为基准数，这种选择方式比较方便，但当遇到原本就是正序或倒序排列的数组时，就会降低算法性能。</li>
+<li>随机选取数字作为基准数，这种选取方式较为安全。</li>
+<li>三数取中，将第一个数、最后一个数、中间的数排列后取中值，也在一定程度上减少了复杂化的危险性。</li>
+</ol>
+<p>以下使用三数取中法为例：</p>
+<pre class=" language-Java"><code class="language-Java">public class Main{
+    public static void main(String[] args) {
+        int[] data = new int[]{12,3,22,51,13,7,10,11};
+        quicksort(data,0,data.length - 1);
+        System.out.println(Arrays.toString(data));
+    }
+    public static void quicksort(int[] data,int left,int right){
+        if(left >= right)
+            return;
+        int medium = (left + right) / 2;    //求出中值的位置
+
+        if(data[left] > data[right])    //保证左端的值较小
+            swap(data,left,right);
+        if(data[medium] > data[right])  //保证中间的值较小
+            swap(data,medium,right);
+        if(data[medium] > data[left])   //保证左端的值为中值
+            swap(data,medium,left);
+        int pivotvalue = data[left];
+
+        int i = left;
+        int j = right;
+        while(i < j){
+            while(data[i] <= pivotvalue="" &&="" i="" <="" j)="" i++;="" while(data[j]="">= pivotvalue && i < j)
+                j--;
+            if(i < j)
+                swap(data,i,j);
+
+        }
+        int temp = 0;
+        if(data[i] > data[left])    //判断游标值大小
+            temp = i - 1;
+        else
+            temp = i;
+        swap(data,temp,left);
+        quicksort(data,left,temp - 1);
+        quicksort(data,temp + 1,right);
+
+
+    }
+    public static void swap(int[] data,int a,int b){
+        int temp = data[a];
+        data[a] = data[b];
+        data[b] = temp;
+    }
+}
+</=></code></pre>
+<p>平均算法复杂度：$O(nlogn)$</p>
+<hr>
+<h2 id="4">堆排序</h2>
+
+<p><strong>堆排序</strong>主要针对的是“堆”这种数据结构。它是一种<strong>选择排序</strong>。</p>
+<h5 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h5><p><strong>堆（heap）</strong>是计算机科学中的一类数据结构，它的表现形式是一棵<strong>完全二叉树</strong>的<strong>层序遍历数组</strong>。</p>
+<p>堆结构与完全二叉树的不同在于：</p>
+<ul>
+<li>堆中的节点总是不大于或不小于其父节点的值，即堆结构存在<strong>有序性</strong>。</li>
+</ul>
+<p>所以我们可以说：</p>
+<ul>
+<li>堆一定是完全二叉树。</li>
+<li>完全二叉树不一定是堆。</li>
+</ul>
+<p>堆通常分为两种：根节点为最小值的堆为<strong>小根堆</strong>（最小堆），根节点为最大值的堆为<strong>大根堆</strong>（最大堆）。</p>
+<p><img src="/2018/05/14/sort-algorithm/小跟堆.png" alt="小跟堆"><br><img src="/2018/05/14/sort-algorithm/大跟堆.png" alt="大跟堆"></p>
+<p>堆排序的主要原理为：</p>
+<ol>
+<li>从下向上遍历每个非叶节点，使它与子节点形成堆关系。</li>
+<li>将根节点与最后一个节点进行互换，此时数组最后一位为最大/最小值。</li>
+<li>将除去原根节点之外的数据重复以上操作，逐步将每次的最大/最小值沉入数组后方，完成排序。</li>
+</ol>
+<p>下面使用图示进行详细讲解：</p>
+<p>例如，需要排序的数组为{12,3,5,14,8},我们使用堆排序进行升序排序，我们首先将数组构建为如下二叉树：</p>
+<p><img src="/2018/05/14/sort-algorithm/堆排序01.png" alt="堆排序01"></p>
+<p>因为是升序排序，所以我们考虑构建大根堆，首先找到最后的非叶节点，将它与两子节点节点进行比较，最大值交换到当前位置：</p>
+<p><img src="/2018/05/14/sort-algorithm/堆排序02.png" alt="堆排序02"></p>
+<p>然后继续向上寻找非叶节点，此时非叶节点为跟节点，重复之前的操作：</p>
+<p><img src="/2018/05/14/sort-algorithm/堆排序03.png" alt="堆排序03"></p>
+<p>我们将此时的根节点，也就是数组中的最大值与最后一个节点进行交换：</p>
+<p><img src="/2018/05/14/sort-algorithm/堆排序04.png" alt="堆排序04"></p>
+<p>此时的数组也就变成了{8,12,5,3,14},数组的最大值沉到了最后一位。接下来，不考虑最后一位，继续重复之前操作，即可完成排序。</p>
+<p>使用代码实现如下：</p>
+<pre class=" language-Java"><code class="language-Java">public class Main{
+    public static void main(String[] args) {
+        int[] data = new int[]{12,3,22,51,13,7,10};
+        sort(data);
+        System.out.println(Arrays.toString(data));
+    }
+
+    public static void sort(int []arr){
+        //1.构建大顶堆
+        for(int i=arr.length/2-1;i>=0;i--){
+            //从第一个非叶子结点从下至上，从右至左调整结构
+            adjustHeap(arr,i,arr.length);
+        }
+        //2.调整堆结构+交换堆顶元素与末尾元素
+        for(int j=arr.length-1;j>0;j--){
+            swap(arr,0,j);//将堆顶元素与末尾元素进行交换
+            adjustHeap(arr,0,j);//重新对堆进行调整
+        }
+
+    }
+
+    /**
+     * 调整大顶堆（仅是调整过程，建立在大顶堆已构建的基础上）
+     * @param arr
+     * @param i
+     * @param length
+     */
+    public static void adjustHeap(int []arr,int i,int length){
+        int temp = arr[i];//先取出当前元素i
+        for(int k=i*2+1;k<length;k=k*2+1){ 从i结点的左子结点开始，也就是2i+1处开始="" if(k+1<length="" &&="" arr[k]<arr[k+1]){="" 如果左子结点小于右子结点，k指向右子结点="" k++;="" }="" if(arr[k]="">temp){//如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
+                arr[i] = arr[k];
+                i = k;
+            }else{
+                break;
+            }
+        }
+        arr[i] = temp;//将temp值放到最终的位置
+    }
+
+    /**
+     * 交换元素
+     * @param arr
+     * @param a
+     * @param b
+     */
+    public static void swap(int []arr,int a ,int b){
+        int temp=arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+}
+</length;k=k*2+1){></code></pre>
+<p>可以看出，虽然此算法叫<strong>堆排序</strong>，但实际上经过调整，对不构成完全二叉树的数据依旧可以进行排序。</p>
+<p>堆排序算法的最优、最差、平均算法复杂度均为：$O(nlogn)$</p>
+<p>堆排序与基本选择排序一样，均为<strong>不稳定排序算法</strong>。</p>
+<blockquote>
+<p>参考文章：<br><a href="https://www.cnblogs.com/chengxiao/p/6129630.html" target="_blank" rel="noopener">图解排序算法（三）之堆排序</a></p>
+</blockquote>
+<hr>
+<h2 id="5">简单插入排序</h2>
+
+<p><strong>简单插入排序</strong>又称<strong>直接插入排序</strong>，也是一种较为简单的排序方式。</p>
+<p>它的主要思路是，将数组中元素，依次放入有序表中，每次插入新元素，就将它与已有元素进行比较，将排序逻辑靠后的元素位置加一，将新元素插入。</p>
+<p>代码如下：</p>
+<pre class=" language-Java"><code class="language-Java">public class Main{
+    public static void main(String[] args) {
+        int[] data = new int[]{12,3,22,51,13,7,10};
+        data = simpleInsertSort(data);
+        System.out.println(Arrays.toString(data));
+    }
+
+    private static int[] simpleInsertSort(int[] data) {
+        if(data.length <= 1)="" return="" data;="" int[]="" result="new" int[data.length];="" result[0]="data[0];" for(int="" i="1;i" <="" data.length;i++){="" int="" pos="0;" j="i" -="" 1;="">= 0 ;j--){
+                if(result[j] <= data[i])="" {="" pos="j" +="" 1;="" break;="" }="" else="" result[j="" 1]="result[j];" result[pos]="data[i];" return="" result;="" <="" code=""></=></=></code></pre>
+<p>当原数组为正序时，每次插入都只需要比较一次，所以最优算法复杂度为：$O(n)$</p>
+<p>当原数组为倒序时，每次插入都需要与之前当所有数据进行比较，所以最差算法复杂度为：$1+2+3+…+(n-1) = \frac{1+(n-1)}{2} \times n =O(n^2)$</p>
+<p>平均算法复杂度为：$O(n^2)$</p>
+<hr>
+<h2 id="6">希尔排序</h2>
+
+<p><strong>希尔排序</strong>是对简单插入排序的一种优化排序算法，也被称为<strong>减小增量排序</strong>，它是最早突破$$O(n^2)$$复杂度的一批算法。</p>
+<p>希尔排序的主要思路是：首先选定一个增量，按照增量来将原有数组划分为多个子数组，分别将各个子数组进行插入排序，然后不断减少增量，重复之前的步骤，直到增量减小为1时完成排序。</p>
+<p>图解如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">增量为4</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">4</font></td>
+<td style="text-align:center"><font color="blue">3</font></td>
+<td style="text-align:center"><font color="green">1</font></td>
+<td style="text-align:center"><font color="black">6</font></td>
+<td style="text-align:center"><font color="red">5</font></td>
+<td style="text-align:center"><font color="blue">2</font></td>
+<td style="text-align:center"><font color="green">8</font></td>
+<td style="text-align:center"><font color="black">7</font></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">第一次排序</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">4</font></td>
+<td style="text-align:center"><font color="blue">2</font></td>
+<td style="text-align:center"><font color="green">1</font></td>
+<td style="text-align:center"><font color="black">6</font></td>
+<td style="text-align:center"><font color="red">5</font></td>
+<td style="text-align:center"><font color="blue">3</font></td>
+<td style="text-align:center"><font color="green">8</font></td>
+<td style="text-align:center"><font color="black">7</font></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">增量为2</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">4</font></td>
+<td style="text-align:center"><font color="blue">2</font></td>
+<td style="text-align:center"><font color="red">1</font></td>
+<td style="text-align:center"><font color="blue">6</font></td>
+<td style="text-align:center"><font color="red">5</font></td>
+<td style="text-align:center"><font color="blue">3</font></td>
+<td style="text-align:center"><font color="red">8</font></td>
+<td style="text-align:center"><font color="blue">7</font></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">第二次排序</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">1</font></td>
+<td style="text-align:center"><font color="blue">2</font></td>
+<td style="text-align:center"><font color="red">4</font></td>
+<td style="text-align:center"><font color="blue">3</font></td>
+<td style="text-align:center"><font color="red">5</font></td>
+<td style="text-align:center"><font color="blue">6</font></td>
+<td style="text-align:center"><font color="red">8</font></td>
+<td style="text-align:center"><font color="blue">7</font></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">增量为1</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">1</font></td>
+<td style="text-align:center"><font color="red">2</font></td>
+<td style="text-align:center"><font color="red">4</font></td>
+<td style="text-align:center"><font color="red">3</font></td>
+<td style="text-align:center"><font color="red">5</font></td>
+<td style="text-align:center"><font color="red">6</font></td>
+<td style="text-align:center"><font color="red">8</font></td>
+<td style="text-align:center"><font color="red">7</font></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">第三次排序</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color="red">1</font></td>
+<td style="text-align:center"><font color="red">2</font></td>
+<td style="text-align:center"><font color="red">3</font></td>
+<td style="text-align:center"><font color="red">4</font></td>
+<td style="text-align:center"><font color="red">5</font></td>
+<td style="text-align:center"><font color="red">6</font></td>
+<td style="text-align:center"><font color="red">7</font></td>
+<td style="text-align:center"><font color="red">8</font></td>
+</tr>
+</tbody>
+</table>
+<h6 id="增量的选择"><a href="#增量的选择" class="headerlink" title="增量的选择"></a>增量的选择</h6><p>增量的选择与减小规则应该按照实际情况进行规划，我们这里使用最简单的方式：初始增量为数组长度的一般，每次增量减小为原先增量的一半。在进行分段排序时，我们可以使用有序数组插入的方式，也可以使用交换方式。</p>
+<pre class=" language-Java"><code class="language-Java">public class ShellSort {
+    public static void main(String []args){
+        int []arr ={1,4,2,7,9,8,3,6};
+        sort(arr);
+        System.out.println(Arrays.toString(arr));
+        int []arr1 ={1,4,2,7,9,8,3,6};
+        sort1(arr1);
+        System.out.println(Arrays.toString(arr1));
+    }
+
+    /**
+     * 希尔排序 针对有序序列在插入时采用交换法
+     * @param arr
+     */
+    public static void sort(int []arr){
+        //增量gap，并逐步缩小增量
+       for(int gap=arr.length/2;gap>0;gap/=2){
+           //从第gap个元素，逐个对其所在组进行直接插入排序操作
+           for(int i=gap;i<arr.length;i++){ int="" j="i;" while(j-gap="">=0 && arr[j]<arr[j-gap]){ 插入排序采用交换法="" swap(arr,j,j-gap);="" j-="gap;" }="" **="" *="" 希尔排序="" 针对有序序列在插入时采用移动法。="" @param="" arr="" public="" static="" void="" sort1(int="" []arr){="" 增量gap，并逐步缩小增量="" for(int="" gap="arr.length/2;gap">0;gap/=2){
+            //从第gap个元素，逐个对其所在组进行直接插入排序操作
+            for(int i=gap;i<arr.length;i++){ int="" j="i;" temp="arr[j];" if(arr[j]<arr[j-gap]){="" while(j-gap="">=0 && temp<arr[j-gap]){ 移动法="" arr[j]="arr[j-gap];" j-="gap;" }="" **="" *="" 交换数组元素="" @param="" arr="" a="" b="" public="" static="" void="" swap(int="" []arr,int="" a,int="" b){="" arr[a]="arr[a]+arr[b];" arr[b]="arr[a]-arr[b];" <="" code=""></arr[j-gap]){></arr.length;i++){></arr[j-gap]){></arr.length;i++){></code></pre>
+<p>其最坏时间复杂度依然为$O(n^2)$，一些经过优化的增量序列如Hibbard经过复杂证明可使得最坏时间复杂度为$O(n^{\frac{3}{2}})$</p>
+<blockquote>
+<p>本段参考：</p>
+<p><a href="https://www.cnblogs.com/chengxiao/p/6104371.html" target="_blank" rel="noopener">图解排序算法(二)之希尔排序</a></p>
+</blockquote>
+<h4 id="更新记录"><a href="#更新记录" class="headerlink" title="更新记录"></a>更新记录</h4><table>
+<thead>
+<tr>
+<th>更新时间</th>
+<th>更新内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2018年5月14日</td>
+<td>选择排序</td>
+</tr>
+<tr>
+<td>2018年5月15日</td>
+<td>冒泡排序</td>
+</tr>
+<tr>
+<td>2018年5月16日</td>
+<td>快速排序</td>
+</tr>
+<tr>
+<td>2018年5月17日</td>
+<td>堆排序</td>
+</tr>
+<tr>
+<td>2018年5月17日</td>
+<td>简单插入排序</td>
+</tr>
+<tr>
+<td>2018年5月23日</td>
+<td>希尔排序</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://jacatch.github.io" class="b-link-green">天井</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/05/14/sort-algorithm/" class="b-link-green">常用的排序算法</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '29029599dd48ebe06df9',
+        clientSecret: 'c25921347c95daae6d07aee8acae7a946f4455b4',
+        repo: 'jacatch.github.io',
+        owner: 'jacatch',
+        admin: "jacatch",
+        id: '2018-05-14T21-11-37',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/05/26/binary-search-tree/">
+                    <div class="card-image">
+                        
+                        <img src="/images/20180526.png" class="responsive-img" alt="二叉查找树">
+                        
+                        <span class="card-title">二叉查找树</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">二叉树二叉树是在程序设计中经常用到的数据结构之一，我们在数据结构中经常说的堆结构就是一种二叉树。二叉树与通常的树不同的是它规定每个节点最多只能拥有两个子节点。
+
+完全二叉树完全二叉树是二叉树的一种形态，它要求除了最后一层外，其余层必须完全填</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/程序设计/" class="post-category" target="_blank">
+                                    程序设计
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/数据结构/" target="_blank">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/05/14/sort-algorithm/">
+                    <div class="card-image">
+                        
+                        <img src="/images/20180514.jpg" class="responsive-img" alt="常用的排序算法">
+                        
+                        <span class="card-title">常用的排序算法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+简单选择排序
+
+在java编程中我们经常遇到排序问题，在我们刚刚学习编程时，我们通常使用的是以下的方式进行排序：
+
+int temp;
+for(int i = 0; i &lt; data.length() - 1;i++){
+  for</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/程序设计/" class="post-category" target="_blank">
+                                    程序设计
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/算法/" target="_blank">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">15.3k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/jacatch" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:jacatch@outlook.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=915084059" class="tooltipped" data-tooltip="QQ联系我: 915084059" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
