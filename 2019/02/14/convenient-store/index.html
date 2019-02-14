@@ -4,10 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="二叉查找树, 天井">
-    <meta name="description" content="二叉树二叉树是在程序设计中经常用到的数据结构之一，我们在数据结构中经常说的堆结构就是一种二叉树。二叉树与通常的树不同的是它规定每个节点最多只能拥有两个子节点。
+    <meta name="keywords" content="人间便利店, 天井">
+    <meta name="description" content="
+正常的世界极度高压，异物会静静地被剔除，不正常的人会被逐一处理掉。——村田沙耶香《人间便利店》
 
-完全二叉树完全二叉树是二叉树的一种形态，它要求除了最后一层外，其余层必须完全填">
+
+
+从绳文时代起，这个社会便注定不会以宽广的胸怀去容纳名为少数派的叛道者。古仓惠子就是这样一个叛道者，她是一个如《人间失格》中叶藏一般的人物">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>二叉查找树 | 天井</title>
+    <title>人间便利店 | 天井</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -305,13 +308,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/images/20180526.png')">
+<div class="bg-cover post-cover" style="background-image: url('/images/20190214.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        二叉查找树
+                        人间便利店
                     </div>
                 </div>
             </div>
@@ -424,8 +427,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/数据结构/" target="_blank">
-                                <span class="chip bg-color">数据结构</span>
+                            <a href="/tags/文学小说/" target="_blank">
+                                <span class="chip bg-color">文学小说</span>
                             </a>
                         
                     </div>
@@ -436,8 +439,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/程序设计/" class="post-category" target="_blank">
-                                程序设计
+                            <a href="/categories/读书笔记/" class="post-category" target="_blank">
+                                读书笔记
                             </a>
                         
                     </div>
@@ -448,21 +451,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-05-26
+                    2019-02-14
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.9k
+                        632
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        2 分
                     </div>
                     
                 
@@ -478,90 +481,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h4><p>二叉树是在程序设计中经常用到的数据结构之一，我们在数据结构中经常说的<strong>堆</strong>结构就是一种二叉树。二叉树与通常的树不同的是它规定每个节点最多只能拥有两个子节点。</p>
-<a id="more"></a>
-<h6 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h6><p><strong>完全二叉树</strong>是二叉树的一种形态，它要求除了最后一层外，其余层必须完全填充，且有子节点的节点的度数必须为2。其叶子节点均靠左对其。</p>
-<center><img src="/2018/05/26/binary-search-tree/CompleteBinaryTree.png" style="width:50%;"></center>
-
-<h6 id="完满二叉树"><a href="#完满二叉树" class="headerlink" title="完满二叉树"></a>完满二叉树</h6><p><strong>完满二叉树</strong>要求比完全二叉树低，它仅要求所有的非叶子节点的度数为2，即所有有子节点的节点都必须有两个子节点。</p>
-<center><img src="/2018/05/26/binary-search-tree/FullBinaryTree.png" style="width:50%;"></center>
-
-<h6 id="完美二叉树"><a href="#完美二叉树" class="headerlink" title="完美二叉树"></a>完美二叉树</h6><p><strong>完美二叉树</strong>又被称为<strong>满二叉树</strong>。顾名思义，其要求所有层都需要完全填充。此时深度为h的满二叉树的节点数为$$2^{h} - 1$$</p>
-<center><img src="/2018/05/26/binary-search-tree/PerfectBinaryTree.png" style="width:50%;"></center>
-
-<h4 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h4><p><strong>二叉查找树</strong>又被称为<strong>二叉排序树</strong>。是一种特殊的二叉树，它并不要求一定是完满二叉树还是满二叉树，它只要求节点的值大于其左子节点，小于其右子节点。</p>
-<p><img src="/2018/05/26/binary-search-tree/BinarySearchTree" alt="二叉查找树"></p>
-<p>由上图可以看出，二叉查找树在进行二叉树查找时，基本遵循的是二分查找的思想。它的算法复杂度为$$O(logn)$$一棵深度为h的二叉查找树，我们也可以说它的算法复杂度为$$O(h)$$</p>
-<h4 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h4><p><strong>平衡二叉树</strong>是一种能够在构建二叉树时完成自平衡性的二叉查找树。</p>
-<p>传统的二叉查找树虽然算法复杂度达到了O(logn)，但当二叉查找树构建时，节点过度偏向于一侧时，它的算法复杂度可能会被退化为O(n)，即退化为链表。</p>
-<p>如下图</p>
-<center><img src="/2018/05/26/binary-search-tree/二叉查找退化.png" style="width:50%;"></center>
-
-<h6 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h6><p><strong>AVL树</strong>即是传统平衡二叉树，它具有以下两个性质：</p>
-<ol>
-<li>节点两边的高度差不大于1.</li>
-<li>节点的子树也为AVL树。</li>
-</ol>
-<p>如下图，我们用上面的红数字来记录该节点左子树与右子树的层数差，现在最大层数差的绝对值不超过1，故我们称它现在处于平衡状态。</p>
-<center><img src="/2018/05/26/binary-search-tree/AVLtreeBase.png" style="width:50%;"></center>
-
-<p>我们可以考虑，不平衡状态有以下四种情况：</p>
-<p><img src="/2018/05/26/binary-search-tree/leftleft.png" style="width:25%;float:left"></p>
-<p><img src="/2018/05/26/binary-search-tree/leftright.png" style="width:25%;float:left"></p>
-<p><img src="/2018/05/26/binary-search-tree/rightleft.png" style="width:25%;float:left"></p>
-<p><img src="/2018/05/26/binary-search-tree/rightright.png" style="width:25%;"></p>
-<p>分别是：</p>
-<ol>
-<li>向左子树的左节点添加元素导致不平衡</li>
-<li>向左子树的右节点添加元素导致不平衡</li>
-<li>向右子树的左节点添加元素导致不平衡</li>
-<li>向右子树的右节点添加元素导致不平衡</li>
-</ol>
-<p>也就是<strong>左左</strong>、<strong>左右</strong>、<strong>右左</strong>、<strong>右右</strong>。</p>
-<p>为了让它查找时的算法复杂度最低，我们需要对整个平衡树进行旋转。</p>
-<p><strong>单旋转</strong></p>
-<center><img src="/2018/05/26/binary-search-tree/单旋转.png" style="width:25%;"></center>
-
-<p>当平衡树左子树较重时，需要右旋，将左子树的根节点作为新根节点，将左子树根节点的右子节点作为原根节点的左子节点。</p>
-<p>当平衡树右子树较重时，需要左旋，将右子树的根节点作为新根节点，将右子树根节点的左子节点作为原根节点的右子节点。</p>
-<p>单旋转适用于左左、右右的情况。</p>
-<p><strong>双旋转</strong></p>
-<center><img src="/2018/05/26/binary-search-tree/双旋转.png" style="width:25%;"></center>
-
-<p>双旋转就是先将较重子树进行一次单旋转，然后总体再进行一次单旋转，这样一共进行两次旋转使树成为平衡状态。</p>
-<p><strong>删除节点</strong></p>
-<p>由于二叉树节点的删除也会破坏其平衡性，所以在进行删除时，主要使用以下方式：</p>
-<p>若要删除的节点的左右子树非空，则选取其深度最大的子树，将子树中的最大（最小）值赋值给根节点，然后删除子树中最大（最小）值的节点。</p>
-<p>假设要删除根节点：</p>
-<center><img src="/2018/05/26/binary-search-tree/删除节点.png" style="width:25%;"></center>
-
-<p>在删除结束后，要判断当前的树是否平衡，若不平衡，则进行旋转。</p>
-<p>VAL树的插入、删除、查询时间复杂度均为$$O(logn)$$</p>
-<h6 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h6><p><strong>红黑树</strong>(RB-tree)是通过颜色来维持二叉树平衡的树，它必须遵守以下五点规则：</p>
-<ol>
-<li>每个结点都只能是红色或者黑色中的一种。</li>
-<li>根结点是黑色的。</li>
-<li>每个叶结点（NIL节点，空节点）是黑色的。</li>
-<li>如果一个结点是红的，则它两个子节点都是黑的。也就是说在一条路径上不能出现相邻的两个红色结点。</li>
-<li>从任一结点到其每个叶子的所有路径都包含相同数目的黑色结点。</li>
-</ol>
-<center><img src="/2018/05/26/binary-search-tree/红黑树.png"></center>
-
-<p>当我们插入数据时，如果插入的节点颜色为黑色，则一定会违背规则3，所以我们默认插入的节点为红色。在我们插入数据时，我们判断插入后的红黑树是否违背以上的五个规则，如果违背，则要对其进行调整，也就是旋转和着色。</p>
-<ol>
-<li>插入到一个空的树，插入结点则为根结点，只需要将红色结点重新转染成黑色结点来满足性质2；</li>
-<li>新结点的父结点为黑色，满足所有条件；</li>
-<li>新结点的父结点为红色，因为性质2和性质4，所以树必然有祖父结点，则又包括以下的情况：</li>
-<li>父亲结点和叔父结点均为红色，显然无法满足性质4，则将父亲结点和叔父结点绘制成黑色，祖父结点设置成红色，但是仍然无法满足情况，比如考虑到祖父结点可能是根结点，则无法满足性质2，或者祖父结点的父结点是红色的，则无法满足性质4，这时需要将祖父结点作为新的结点来看待进行各种情况的判断，涉及到对祖父结点的递归；</li>
-<li>父亲结点为红色同时叔父结点为黑色或者从缺，这里又分为两种情况，新插入结点为父亲结点的左子结点和右子结点（假设其中父亲结点为祖父结点的左子结点），区别在于旋转的方向，显然，这棵树父亲结点既然为红色，那么其祖父结点则为黑色（性质4），不然无法满足前提。</li>
-<li>新插入结点为父亲结点的左子结点，那么就构成了一个左左的情况，在之前平衡树中提到过，如果要将其进行平衡，则需要对父结点进行一次单右旋转，形成一个父亲结点为相对根结点，子结点和祖父结点为子结点的树，同时将父亲结点的红色改为黑色，祖父结点更改为红色，这下之前无法满足的性质4和性质5就满足了；</li>
-<li>新插入结点为父亲结点的右子结点，那么就会构成一个左右的情况，在之前的平衡树也提到过要进行一次双旋转，先对新结点进行一次单左旋转，变成了左左的结构，再进行一次单右旋转，从而达到满足所有性质；</li>
-<li>父亲结点是祖父结点的右结点，参考平衡树进行相应的操作，原理是一致的</li>
-</ol>
-<blockquote>
-<p>红黑树</p>
-<p><a href="https://www.cnblogs.com/George1994/p/6903437.html" target="_blank" rel="noopener">红黑树</a></p>
+                <blockquote>
+<p>正常的世界极度高压，异物会静静地被剔除，不正常的人会被逐一处理掉。<br><br>——村田沙耶香《人间便利店》</p>
 </blockquote>
+<center><img src="/2019/02/14/convenient-store/book.jpg" width="50%"></center>
+
+<p>从绳文时代起，这个社会便注定不会以宽广的胸怀去容纳名为<code>少数派</code>的叛道者。古仓惠子就是这样一个叛道者，她是一个如《人间失格》中叶藏一般的人物，却比叶藏更为极端。</p>
+<p>她像叶藏一般观察这身边的气氛，但却不想融入某个群体。对她来说，模仿不是一条让自己成为正常人的路，而仅仅是一堵不让外界嘈杂打扰了现有生活的墙。当家人都在想方设法去“治好”她时，她早已知道什么样子是身边人所谓的“正常”，却不知道自己为何需要被“治好”。</p>
+<p>社会就像一个大工厂，它有着自己的一套制度，每一个不堪使用的零件都会被迅速剔除。当身边人都在忙碌的工作，你却行至中年却一直做着那份做了十八年的便利店兼职。当其他人都结婚生子你却踽踽独行，你就成为了异类，成为了这个不堪使用的零件。或者说，人类这个群体，本身就有着深埋在内心深处的恐惧基因。当自己不同于群体，就会去寻找群体的庇护。当出现新的<code>少数派</code>，就会惧怕异类的蔓延，迅速将其消灭。于是，每个人的个性被环境稀释，最终成为泥沼的一洼。</p>
+<p>于是，惠子选择了便利店，这个不靠感性存在，而是按部就班地机械化运作的小工厂给了她安定感。也正因如此，当白羽先生闯入自己的生活，当店里众人“感性”地讨论自己的时候，她动摇了，她感觉到了感性世界对自己残酷的侵略。这是只要她作为一个“人”存在便无法避免的。</p>
+<p>于是她选择成为了一种名为“便利店店员”的生物。</p>
+<p>所以，辨别一个物种靠的是什么？是DNA吗？还是依靠着个体对整个群体的<code>屈服</code>呢？当一个个体昂起头，表达出对所在群体的不屑，选择另一个身份时，这就是新物种的诞生吧。</p>
+<p>书中言之喜剧，置于生活，却处处都是悲剧。</p>
 
             </div>
             <hr>
@@ -702,7 +633,7 @@
                     </span>
                     <a href="https://jacatch.gitee.io" class="b-link-green">天井</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/05/26/binary-search-tree/" class="b-link-green">二叉查找树</a>
+                    <a href="/2019/02/14/convenient-store/" class="b-link-green">人间便利店</a>
                 </p>
             </div>
         </div>
@@ -984,25 +915,28 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2018/08/26/fune-wo-amu/">
+                <a href="/2019/02/14/convenient-store/">
                     <div class="card-image">
                         
-                        <img src="/images/20180826.jpg" class="responsive-img" alt="编舟记">
+                        <img src="/images/20190214.jpg" class="responsive-img" alt="人间便利店">
                         
-                        <span class="card-title">编舟记</span>
+                        <span class="card-title">人间便利店</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
-“辞典，是横渡词汇海洋的船，”荒木仿佛倾吐灵魂之声一般娓娓道来，“人们乘坐辞典这艘船，搜集漂浮在漆黑海面上的点点星光。只为了能用最恰当的措辞，准确地把自己的所思所想传达给他人。如果没有辞典，我们只能伫立在这片浩瀚的大海前，驻足不前。”
+正常的世界极度高压，异物会静静地被剔除，不正常的人会被逐一处理掉。——村田沙耶香《人间便利店》
 
-</div>
+
+
+从绳文时代起，这个社会便注定不会以宽广的胸怀去容纳名为少数派的叛道者。古仓惠子就是这样一个叛道者，她是一个如《人间失格》中叶藏一般的人物</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1015,6 +949,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1033,26 +968,22 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/05/14/sort-algorithm/">
+                <a href="/2019/02/13/snow-flake-algorithm/">
                     <div class="card-image">
                         
-                        <img src="/images/20180514.jpg" class="responsive-img" alt="常用的排序算法">
+                        <img src="/images/20190213.jpg" class="responsive-img" alt="分布式id生成（一）SnowFlake算法">
                         
-                        <span class="card-title">常用的排序算法</span>
+                        <span class="card-title">分布式id生成（一）SnowFlake算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-简单选择排序
+                    <div class="summary">概述在实际的生产中，我们经常会遇到id生成问题。通常，我们对id生成现象都有一个最基础的要求保证id的唯一性。针对这个最基础要求，经常用到的解决方案有以下几种。
 
-在java编程中我们经常遇到排序问题，在我们刚刚学习编程时，我们通常使用的是以下的方式进行排序：
-
-int temp;
-for(int i = 0; i &lt; data.length() - 1;i++){
-  for</div>
+微软公司通用唯一识别码（UUID）
+Twitter公司雪花算法（SnowFl</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-14
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-13
                             </span>
                         <span class="publish-author">
                             
@@ -1071,6 +1002,10 @@ for(int i = 0; i &lt; data.length() - 1;i++){
                     
                     <a href="/tags/算法/" target="_blank">
                         <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/分布式/" target="_blank">
+                        <span class="chip bg-color">分布式</span>
                     </a>
                     
                 </div>
@@ -1132,13 +1067,6 @@ for(int i = 0; i &lt; data.length() - 1;i++){
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 <footer class="page-footer bg-color">
     <div class="container row center-align">
