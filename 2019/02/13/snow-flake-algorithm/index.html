@@ -502,9 +502,9 @@ Twitter公司雪花算法（SnowFl">
 <ul>
 <li>整个结构是64位，所以我们在Java中可以使用long来进行存储。</li>
 <li>1 bit是符号位，丢弃不用。</li>
-<li>41 bits时间戳，可表示最大$(2^{41}-1) / (1000 <em> 60 </em> 60 <em> 24 </em> 365) ≈ 69$,即可保证约69年内的id不重复。</li>
+<li>41 bits时间戳，可表示最大$$(2^{41}-1) / (1000 <em> 60 </em> 60 <em> 24 </em> 365) ≈ 69$$,即可保证约69年内的id不重复。</li>
 <li>10 bits的机器id，5 bits作为<code>datacenterId</code>,5 bits作为<code>workerId</code>。</li>
-<li>12 bits的序列号，用来标识同一时间同一台机器生成的id，$2^{12}-1 = 4095$，即允许同一时间同台机器生成4095个id。</li>
+<li>12 bits的序列号，用来标识同一时间同一台机器生成的id，$$2^{12}-1 = 4095$$，即允许同一时间同台机器生成4095个id。</li>
 </ul>
 <p>可以看出，雪花算法生成的id既保证了唯一性，又因为是long存储，所以能够按照时间进行排序。至于69年的限制。。。。。。反正69年后公司在不在都不一定了，关我啥事。</p>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>twitter原厂生产的实现代码是用scala写的，发布在twitter的<a href="https://github.com/twitter-archive/snowflake/blob/snowflake-2010/src/main/scala/com/twitter/service/snowflake/IdWorker.scala" target="_blank" rel="noopener">git仓库</a>中。</p>
