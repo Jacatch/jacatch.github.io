@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jacatch.gitee.io/"/>
-  <updated>2019-03-11T13:22:16.105Z</updated>
+  <updated>2019-03-20T16:53:32.076Z</updated>
   <id>https://jacatch.gitee.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>机器学习（一）线性回归与梯度下降</title>
+    <link href="https://jacatch.gitee.io/2019/03/20/gradient-descent/"/>
+    <id>https://jacatch.gitee.io/2019/03/20/gradient-descent/</id>
+    <published>2019-03-20T14:43:11.000Z</published>
+    <updated>2019-03-20T16:53:32.076Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;什么是监督学习？&quot;&gt;&lt;a href=&quot;#什么是监督学习？&quot; class=&quot;headerlink&quot; title=&quot;什么是监督学习？&quot;&gt;&lt;/a&gt;什么是监督学习？&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="程序设计" scheme="https://jacatch.gitee.io/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+      <category term="机器学习" scheme="https://jacatch.gitee.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>三年A班~从现在起大家都是人质</title>
     <link href="https://jacatch.gitee.io/2019/03/11/mind-voice/"/>
     <id>https://jacatch.gitee.io/2019/03/11/mind-voice/</id>
     <published>2019-03-11T10:57:56.000Z</published>
-    <updated>2019-03-11T13:22:16.105Z</updated>
+    <updated>2019-03-11T13:22:18.000Z</updated>
     
     <summary type="html">
     
@@ -50,7 +77,7 @@
     <link href="https://jacatch.gitee.io/2019/02/14/convenient-store/"/>
     <id>https://jacatch.gitee.io/2019/02/14/convenient-store/</id>
     <published>2019-02-14T02:11:07.000Z</published>
-    <updated>2019-02-14T03:03:41.949Z</updated>
+    <updated>2019-02-14T03:03:42.000Z</updated>
     
     <summary type="html">
     
@@ -79,7 +106,7 @@
     <link href="https://jacatch.gitee.io/2019/02/13/snow-flake-algorithm/"/>
     <id>https://jacatch.gitee.io/2019/02/13/snow-flake-algorithm/</id>
     <published>2019-02-13T01:06:41.000Z</published>
-    <updated>2019-02-15T10:41:37.367Z</updated>
+    <updated>2019-02-15T10:41:38.000Z</updated>
     
     <summary type="html">
     
@@ -107,7 +134,7 @@
     <link href="https://jacatch.gitee.io/2018/10/03/collection-class/"/>
     <id>https://jacatch.gitee.io/2018/10/03/collection-class/</id>
     <published>2018-10-03T01:56:02.000Z</published>
-    <updated>2019-02-28T13:18:22.518Z</updated>
+    <updated>2019-02-28T13:18:24.000Z</updated>
     
     <summary type="html">
     
@@ -133,7 +160,7 @@
     <link href="https://jacatch.gitee.io/2018/09/02/java-proxy/"/>
     <id>https://jacatch.gitee.io/2018/09/02/java-proxy/</id>
     <published>2018-09-02T10:43:12.000Z</published>
-    <updated>2019-02-13T00:51:34.578Z</updated>
+    <updated>2019-02-13T00:51:36.000Z</updated>
     
     <summary type="html">
     
@@ -153,7 +180,7 @@
     <link href="https://jacatch.gitee.io/2018/09/02/java-lock-aqs/"/>
     <id>https://jacatch.gitee.io/2018/09/02/java-lock-aqs/</id>
     <published>2018-09-02T01:20:22.000Z</published>
-    <updated>2019-02-13T00:51:35.878Z</updated>
+    <updated>2019-02-13T00:51:36.000Z</updated>
     
     <summary type="html">
     
@@ -164,9 +191,9 @@
       <category term="程序设计" scheme="https://jacatch.gitee.io/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
-      <category term="Java基础" scheme="https://jacatch.gitee.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
       <category term="Java源码" scheme="https://jacatch.gitee.io/tags/Java%E6%BA%90%E7%A0%81/"/>
+    
+      <category term="Java基础" scheme="https://jacatch.gitee.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -175,7 +202,7 @@
     <link href="https://jacatch.gitee.io/2018/09/01/java-fair-lock/"/>
     <id>https://jacatch.gitee.io/2018/09/01/java-fair-lock/</id>
     <published>2018-09-01T02:21:28.000Z</published>
-    <updated>2019-02-13T00:51:37.589Z</updated>
+    <updated>2019-02-13T00:51:38.000Z</updated>
     
     <summary type="html">
     
@@ -186,9 +213,9 @@
       <category term="程序设计" scheme="https://jacatch.gitee.io/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
-      <category term="Java基础" scheme="https://jacatch.gitee.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
       <category term="Java源码" scheme="https://jacatch.gitee.io/tags/Java%E6%BA%90%E7%A0%81/"/>
+    
+      <category term="Java基础" scheme="https://jacatch.gitee.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -197,7 +224,7 @@
     <link href="https://jacatch.gitee.io/2018/08/26/fune-wo-amu/"/>
     <id>https://jacatch.gitee.io/2018/08/26/fune-wo-amu/</id>
     <published>2018-08-26T02:03:40.000Z</published>
-    <updated>2019-02-14T02:25:39.492Z</updated>
+    <updated>2019-02-14T02:25:40.000Z</updated>
     
     <summary type="html">
     
@@ -219,7 +246,7 @@
     <link href="https://jacatch.gitee.io/2018/05/26/binary-search-tree/"/>
     <id>https://jacatch.gitee.io/2018/05/26/binary-search-tree/</id>
     <published>2018-05-26T01:46:05.000Z</published>
-    <updated>2019-02-13T00:51:41.521Z</updated>
+    <updated>2019-02-13T00:51:42.000Z</updated>
     
     <summary type="html">
     
@@ -239,7 +266,7 @@
     <link href="https://jacatch.gitee.io/2018/05/14/sort-algorithm/"/>
     <id>https://jacatch.gitee.io/2018/05/14/sort-algorithm/</id>
     <published>2018-05-14T13:11:37.000Z</published>
-    <updated>2019-02-13T00:51:32.525Z</updated>
+    <updated>2019-02-13T00:51:34.000Z</updated>
     
     <summary type="html">
     
